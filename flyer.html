@@ -26,6 +26,10 @@
     display: flex;
     flex-direction: column;
   }
+  .flyer > * {
+    position: relative;
+    z-index: 1;
+  }
 
   /* ── HEADER BAND (saffron) ── */
   .flyer-header {
@@ -220,8 +224,14 @@
   .member.gensec .m-role { background: #e8f8f0; color: #0d4f2b; }
   .member.treasurer { border-top: 3px solid #3498db; }
   .member.treasurer .m-role { background: #ebf5fb; color: #2471a3; }
-  .member.exec { border-top: 3px solid #9b59b6; }
-  .member.exec .m-role { background: #f4ecf7; color: #7d3c98; }
+  .member.exec-vipin { border-top: 3px solid #9b59b6; }
+  .member.exec-vipin .m-role { background: #f4ecf7; color: #7d3c98; }
+  .member.exec-bharti { border-top: 3px solid #e74c3c; }
+  .member.exec-bharti .m-role { background: #fdedec; color: #c0392b; }
+  .member.exec-surya { border-top: 3px solid #1abc9c; }
+  .member.exec-surya .m-role { background: #e8f8f5; color: #148f77; }
+  .member.exec-gargi { border-top: 3px solid #e91e63; }
+  .member.exec-gargi .m-role { background: #fce4ec; color: #c2185b; }
 
   /* Bottom row: 4 exec */
   .exec-row {
@@ -554,25 +564,25 @@
 
     <!-- 4 Exec -->
     <div class="exec-row">
-      <div class="member exec">
+      <div class="member exec-vipin">
         <img src="Images/Vipin Singh Chauhan.JPG" alt="Vipin Singh Chauhan">
         <div class="m-role">Executive Member</div>
         <div class="m-name">Vipin Singh Chauhan</div>
         <div class="m-bio">Seasoned telecom leader, 20+ yrs managing turnkey projects (up to ₹1000 Cr). Expert budgeting, planning &amp; execution.</div>
       </div>
-      <div class="member exec">
+      <div class="member exec-bharti">
         <img src="Images/Bharti.JPG" alt="Bharti">
         <div class="m-role">Executive Member</div>
         <div class="m-name">Bharti</div>
         <div class="m-bio">Dynamic educator &amp; HR professional, 10+ yrs. Dedicated to sustainable, transparent systems where residents are heard.</div>
       </div>
-      <div class="member exec">
+      <div class="member exec-surya">
         <img src="Images/Surya Soman.JPG" alt="Surya Soman">
         <div class="m-role">Executive Member</div>
         <div class="m-name">Surya Soman</div>
         <div class="m-bio">HR Head (Master's &amp; LLB), 10+ yrs in grievance handling &amp; labor law compliance. Ensures fair, responsive community management.</div>
       </div>
-      <div class="member exec">
+      <div class="member exec-gargi">
         <img src="Images/Dr. Gargi Yadav.JPG" alt="Dr. Gargi Yadav">
         <div class="m-role">Executive Member</div>
         <div class="m-name">Dr. Gargi Yadav</div>
