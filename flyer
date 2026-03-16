@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team M1 United for Change - Vote on 29th March 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .flyer {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER BAND (saffron) ── */
+  .flyer-header {
+    background: linear-gradient(135deg, #f39c12, #e67e22, #d35400);
+    color: white;
+    text-align: center;
+    padding: 24px 24px 20px;
+    position: relative;
+  }
+  .flyer-header::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 15px solid #d35400;
+  }
+  .flyer-header .team-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin-bottom: 4px;
+  }
+  .flyer-header .society {
+    font-size: 0.88rem;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── VOTE DATE STRIP (white - tricolour) ── */
+  .vote-strip {
+    background: #fff;
+    text-align: center;
+    padding: 16px 20px 12px;
+  }
+  .vote-strip .vote-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    font-weight: 900;
+    color: #000080;
+    letter-spacing: 1px;
+  }
+  .vote-strip .vote-date .highlight {
+    color: #d35400;
+  }
+  .vote-strip .vote-sub {
+    font-size: 0.76rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 3px;
+  }
+
+  /* ── MOTTO BAR ── */
+  .motto-bar {
+    background: linear-gradient(135deg, #0d4f2b, #1a7a45);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .motto-bar .m-item {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .motto-bar .m-item .m-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .motto-bar .m-item:nth-child(1) .m-dot { background: #f39c12; }
+  .motto-bar .m-item:nth-child(2) .m-dot { background: #3498db; }
+  .motto-bar .m-item:nth-child(3) .m-dot { background: #e74c3c; }
+  .motto-bar .m-item:nth-child(4) .m-dot { background: #9b59b6; }
+
+  /* ── HIGHLIGHTS ── */
+  .highlights {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 14px 24px;
+    background: #fafbfc;
+    border-bottom: 1px solid #eee;
+  }
+  .hl-item {
+    text-align: center;
+  }
+  .hl-item .hl-icon {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hl-item .hl-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #0d4f2b;
+    line-height: 1.1;
+  }
+  .hl-item .hl-label {
+    font-size: 0.6rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* ── TEAM GRID ── */
+  .team-area {
+    padding: 18px 24px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .team-area h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #0d4f2b;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .team-area .team-sub {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #777;
+    margin-bottom: 14px;
+  }
+
+  /* Top row: 3 leaders */
+  .leaders {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .member {
+    text-align: center;
+    background: #fafbfc;
+    border-radius: 12px;
+    padding: 16px 10px 14px;
+    border: 1px solid #eee;
+    position: relative;
+  }
+  .member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e0e0e0;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    margin-bottom: 8px;
+  }
+  .member .m-role {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 12px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+  .member .m-name {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 3px;
+  }
+  .member .m-bio {
+    font-size: 0.7rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* Role colors */
+  .member.president { border-top: 3px solid #e67e22; }
+  .member.president .m-role { background: #fef5e7; color: #d35400; }
+  .member.gensec { border-top: 3px solid #27ae60; }
+  .member.gensec .m-role { background: #e8f8f0; color: #0d4f2b; }
+  .member.treasurer { border-top: 3px solid #3498db; }
+  .member.treasurer .m-role { background: #ebf5fb; color: #2471a3; }
+  .member.exec { border-top: 3px solid #9b59b6; }
+  .member.exec .m-role { background: #f4ecf7; color: #7d3c98; }
+
+  /* Bottom row: 4 exec */
+  .exec-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .exec-row .member img {
+    width: 86px;
+    height: 86px;
+  }
+  .exec-row .member .m-name {
+    font-size: 0.85rem;
+  }
+  .exec-row .member .m-bio {
+    font-size: 0.66rem;
+  }
+
+  /* ── PROMISE ── */
+  .promise-section {
+    background: linear-gradient(135deg, #0d4f2b, #1a7a45, #27ae60);
+    color: white;
+    text-align: center;
+    padding: 18px 28px;
+    margin: 0 24px;
+    border-radius: 12px;
+  }
+  .promise-section h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .promise-section p {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    opacity: 0.92;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  .promise-section p strong { color: #ffd54f; }
+
+  /* ── CTA FOOTER ── */
+  .cta-footer {
+    text-align: center;
+    padding: 14px 20px 10px;
+  }
+  .cta-footer .cta-line {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #000080;
+    margin-bottom: 4px;
+  }
+  .cta-footer .cta-line em {
+    font-style: normal;
+    color: #d35400;
+  }
+  .cta-footer .cta-date {
+    display: inline-block;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 8px 32px;
+    border-radius: 30px;
+    margin-top: 6px;
+    box-shadow: 0 3px 12px rgba(243,156,18,0.3);
+    letter-spacing: 0.5px;
+  }
+
+  .footer-bar {
+    background: #0a3d22;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 8px;
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; margin: 0; padding: 0; }
+    .flyer {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      margin: 0;
+      overflow: hidden;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .flyer-header, .vote-strip, .motto-bar, .promise-section,
+    .cta-footer, .footer-bar, .team-area, .member {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    /* Print-optimized sizes */
+    .flyer-header { padding: 22px 24px 18px; }
+    .flyer-header .team-name { font-size: 2.1rem; }
+    .vote-strip { padding: 14px 20px 10px; }
+    .vote-strip .vote-date { font-size: 1.45rem; }
+    .highlights { padding: 12px 24px; gap: 24px; }
+    .hl-item .hl-num { font-size: 1.15rem; }
+    .hl-item .hl-label { font-size: 0.55rem; }
+    .motto-bar { padding: 10px 20px; gap: 22px; }
+    .team-area { padding: 14px 22px 10px; }
+    .team-area h3 { font-size: 1.1rem; margin-bottom: 3px; }
+    .leaders { gap: 10px; margin-bottom: 10px; }
+    .exec-row { gap: 10px; }
+    .member { padding: 14px 8px 12px; }
+    .member img { width: 92px; height: 92px; }
+    .exec-row .member img { width: 80px; height: 80px; }
+    .member .m-name { font-size: 0.88rem; }
+    .member .m-bio { font-size: 0.66rem; line-height: 1.45; }
+    .promise-section { padding: 16px 24px; margin: 0 22px; }
+    .promise-section h4 { font-size: 1.05rem; }
+    .promise-section p { font-size: 0.74rem; }
+    .cta-footer { padding: 12px 20px 8px; }
+    .cta-footer .cta-line { font-size: 1.15rem; }
+    .cta-footer .cta-date { font-size: 0.88rem; padding: 7px 28px; }
+    .footer-bar { padding: 6px; font-size: 0.58rem; }
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+  }
+
+  /* ── SCREEN (for preview) ── */
+  @media screen {
+    body { padding: 20px; }
+    .flyer {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+      border-radius: 4px;
+    }
+  }
+
+  /* ── MOBILE — tablets & large phones ── */
+  @media screen and (max-width: 768px) {
+    body { padding: 0; }
+    .flyer {
+      width: 100%;
+      min-height: auto;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    /* Header */
+    .flyer-header { padding: 28px 16px 22px; }
+    .flyer-header .team-name { font-size: 1.55rem; line-height: 1.25; }
+    .flyer-header .society { font-size: 0.78rem; }
+
+    /* Vote strip */
+    .vote-strip { padding: 18px 16px 14px; }
+    .vote-strip .vote-date { font-size: 1.3rem; }
+    .vote-strip .vote-sub { font-size: 0.7rem; letter-spacing: 1.5px; }
+
+    /* Motto bar — 2x2 grid on mobile */
+    .motto-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 14px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .motto-bar .m-item { font-size: 0.72rem; justify-content: flex-start; }
+
+    /* Highlights */
+    .highlights { gap: 16px; padding: 12px 16px; }
+    .hl-item .hl-num { font-size: 1.1rem; }
+
+    /* Team area */
+    .team-area { padding: 18px 14px 12px; }
+    .team-area h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .team-area .team-sub { margin-bottom: 12px; }
+
+    /* Leaders — single column, horizontal layout */
+    .leaders {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .leaders .member {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: 12px 14px;
+      gap: 14px;
+    }
+    .leaders .member img {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      margin-bottom: 0;
+    }
+    .leaders .member .m-role { margin-bottom: 2px; font-size: 0.6rem; }
+    .leaders .member .m-name { font-size: 0.95rem; }
+    .leaders .member .m-bio { font-size: 0.76rem; line-height: 1.55; }
+
+    /* Exec — 2-column, also horizontal */
+    .exec-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .exec-row .member {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: 12px 14px;
+      gap: 14px;
+    }
+    .exec-row .member img {
+      width: 72px;
+      height: 72px;
+      min-width: 72px;
+      margin-bottom: 0;
+    }
+    .exec-row .member .m-role { margin-bottom: 2px; font-size: 0.58rem; }
+    .exec-row .member .m-name { font-size: 0.92rem; }
+    .exec-row .member .m-bio { font-size: 0.74rem; line-height: 1.55; }
+
+    /* Promise */
+    .promise-section {
+      margin: 0 12px;
+      padding: 18px 16px;
+      border-radius: 10px;
+    }
+    .promise-section h4 { font-size: 1rem; }
+    .promise-section p { font-size: 0.74rem; }
+
+    /* CTA */
+    .cta-footer { padding: 16px 14px 12px; }
+    .cta-footer .cta-line { font-size: 1rem; }
+    .cta-footer .cta-date {
+      font-size: 0.82rem;
+      padding: 8px 22px;
+      display: block;
+      margin: 8px 20px 0;
+    }
+  }
+
+  /* ── MOBILE — small phones (≤ 400px) ── */
+  @media screen and (max-width: 400px) {
+    .flyer-header .team-name { font-size: 1.3rem; }
+    .vote-strip .vote-date { font-size: 1.15rem; }
+    .leaders .member img { width: 68px; height: 68px; min-width: 68px; }
+    .exec-row .member img { width: 60px; height: 60px; min-width: 60px; }
+    .leaders .member .m-name { font-size: 0.9rem; }
+    .exec-row .member .m-name { font-size: 0.85rem; }
+    .leaders .member .m-bio, .exec-row .member .m-bio { font-size: 0.7rem; }
+    .cta-footer .cta-line { font-size: 0.9rem; }
+    .cta-footer .cta-date { font-size: 0.78rem; margin: 8px 10px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- Header -->
+  <div class="flyer-header">
+    <div class="team-name">TEAM M1 UNITED FOR CHANGE</div>
+    <div class="society">Express Greens M1, Sector-1 IMT Manesar, Gurugram</div>
+  </div>
+
+  <!-- Vote Date -->
+  <div class="vote-strip">
+    <div class="vote-date">🗳️ Vote on <span class="highlight">29th March 2026</span></div>
+    <div class="vote-sub">RWA Election Day — Your Voice Matters</div>
+  </div>
+
+  <!-- Motto Bar -->
+  <div class="motto-bar">
+    <div class="m-item"><span class="m-dot"></span> Security &amp; Safety</div>
+    <div class="m-item"><span class="m-dot"></span> Transparency</div>
+    <div class="m-item"><span class="m-dot"></span> Development</div>
+    <div class="m-item"><span class="m-dot"></span> Community &amp; Unity</div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="highlights">
+    <div class="hl-item">
+      <span class="hl-icon">⚖️</span>
+      <div class="hl-num">100+</div>
+      <div class="hl-label">Years Combined<br>Experience</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">🎖️</span>
+      <div class="hl-num">7</div>
+      <div class="hl-label">Dedicated<br>Members</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">🏛️</span>
+      <div class="hl-num">4</div>
+      <div class="hl-label">Core<br>Pillars</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">🤝</span>
+      <div class="hl-num">1</div>
+      <div class="hl-label">United<br>Mission</div>
+    </div>
+  </div>
+
+  <!-- Team -->
+  <div class="team-area">
+    <h3>Meet Our Team</h3>
+    <p class="team-sub">Legal expertise &bull; Armed forces discipline &bull; Corporate finance &bull; Mega-project execution &bull; Community leadership</p>
+
+    <!-- Top 3 -->
+    <div class="leaders">
+      <div class="member president">
+        <img src="Images/Sukhvir.JPG" alt="Sukhvir">
+        <div class="m-role">President</div>
+        <div class="m-name">Sukhvir</div>
+        <div class="m-bio">16 yrs civil litigation (LL.B., LL.M., MBA, M.A.). Specializes in land acquisition &amp; civil recovery. Committed to transparent administration.</div>
+      </div>
+      <div class="member gensec">
+        <img src="Images/Shubham Jain.jpg" alt="Shubham Jain">
+        <div class="m-role">General Secretary</div>
+        <div class="m-name">Shubham Jain</div>
+        <div class="m-bio">Engineering Manager at Deloitte, 12+ yrs, ex-Indian Air Force engineer. Absolute transparency, armed forces discipline &amp; structured problem-solving.</div>
+      </div>
+      <div class="member treasurer">
+        <img src="Images/Sandeep Kumar.JPG" alt="Sandeep Kumar">
+        <div class="m-role">Treasurer</div>
+        <div class="m-name">Sandeep Kumar</div>
+        <div class="m-bio">MD with 28 yrs in automobile industry &amp; financial management. Ensures every rupee is tracked and optimized.</div>
+      </div>
+    </div>
+
+    <!-- 4 Exec -->
+    <div class="exec-row">
+      <div class="member exec">
+        <img src="Images/Vipin Singh Chauhan.JPG" alt="Vipin Singh Chauhan">
+        <div class="m-role">Executive Member</div>
+        <div class="m-name">Vipin Singh Chauhan</div>
+        <div class="m-bio">Seasoned telecom leader, 20+ yrs managing turnkey projects (up to ₹1000 Cr). Expert budgeting, planning &amp; execution.</div>
+      </div>
+      <div class="member exec">
+        <img src="Images/Bharti.JPG" alt="Bharti">
+        <div class="m-role">Executive Member</div>
+        <div class="m-name">Bharti</div>
+        <div class="m-bio">Dynamic educator &amp; HR professional, 10+ yrs. Dedicated to sustainable, transparent systems where residents are heard.</div>
+      </div>
+      <div class="member exec">
+        <img src="Images/Surya Soman.JPG" alt="Surya Soman">
+        <div class="m-role">Executive Member</div>
+        <div class="m-name">Surya Soman</div>
+        <div class="m-bio">HR Head (Master's &amp; LLB), 10+ yrs in grievance handling &amp; labor law compliance. Ensures fair, responsive community management.</div>
+      </div>
+      <div class="member exec">
+        <img src="Images/Dr. Gargi Yadav.JPG" alt="Dr. Gargi Yadav">
+        <div class="m-role">Executive Member</div>
+        <div class="m-name">Dr. Gargi Yadav</div>
+        <div class="m-bio">PhD scholar in Mass Communications. Analytical thinking, research-driven innovation &amp; fresh perspectives for community development.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Promise -->
+  <div class="promise-section">
+    <h4>Our Promise to You</h4>
+    <p>
+      We are your neighbours first, your representatives second. If you trust us, we promise to work with
+      <strong>honesty, heart, and relentless dedication</strong> — because Express Greens M1 isn't just an address,
+      it's <strong>where our families grow together</strong>.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-footer">
+    <div class="cta-line">Vote for <em>Progress</em>. Vote for <em>Transparency</em>. Vote for <em>Unity</em>.</div>
+    <div class="cta-date">🗳️ 29th March 2026 — Every Vote Counts!</div>
+  </div>
+
+  <div class="footer-bar">
+    Team M1 United for Change &nbsp;|&nbsp; Express Greens M1, Sector-1 IMT Manesar, Gurugram
+  </div>
+
+</div>
+
+</body>
+</html>
