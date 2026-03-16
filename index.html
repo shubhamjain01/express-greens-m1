@@ -139,10 +139,11 @@
     color: #e67e22;
   }
   .motto-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 18px;
+    max-width: 920px;
+    margin: 0 auto;
     position: relative;
     z-index: 1;
   }
@@ -150,8 +151,7 @@
     background: #fff;
     border: 1px solid #e8e8e8;
     border-radius: 14px;
-    padding: 22px 24px 18px;
-    width: 200px;
+    padding: 22px 18px 18px;
     box-shadow: 0 3px 14px rgba(0,0,0,0.05);
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -163,18 +163,6 @@
     font-size: 1.8rem;
     margin-bottom: 8px;
     display: block;
-  }
-  .motto-card .m-letter {
-    display: inline-block;
-    background: #000080;
-    color: #fff;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    line-height: 30px;
-    font-weight: 800;
-    font-size: 0.85rem;
-    margin-bottom: 6px;
   }
   .motto-card .m-title {
     font-size: 0.88rem;
@@ -188,13 +176,9 @@
     line-height: 1.5;
   }
   .motto-card:nth-child(1) { border-top: 3px solid #e67e22; }
-  .motto-card:nth-child(1) .m-letter { background: #e67e22; }
   .motto-card:nth-child(2) { border-top: 3px solid #3498db; }
-  .motto-card:nth-child(2) .m-letter { background: #3498db; }
   .motto-card:nth-child(3) { border-top: 3px solid #27ae60; }
-  .motto-card:nth-child(3) .m-letter { background: #27ae60; }
   .motto-card:nth-child(4) { border-top: 3px solid #9b59b6; }
-  .motto-card:nth-child(4) .m-letter { background: #9b59b6; }
 
   /* ── VISION STRIP ── */
   .vision-strip {
@@ -248,49 +232,53 @@
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
   }
   .team-card {
     background: #fafbfc;
-    border-radius: 16px;
-    padding: 26px 20px 22px;
-    text-align: center;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    text-align: left;
     box-shadow: 0 3px 15px rgba(0,0,0,0.06);
     border: 1px solid #eee;
-    border-top: 4px solid #0d4f2b;
+    border-left: 4px solid #0d4f2b;
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .team-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     box-shadow: 0 8px 28px rgba(0,0,0,0.1);
   }
   /* Per-member accent colors */
-  .team-card.t1 { border-top-color: #e67e22; }
-  .team-card.t2 { border-top-color: #27ae60; }
-  .team-card.t3 { border-top-color: #3498db; }
-  .team-card.t4 { border-top-color: #9b59b6; }
-  .team-card.t5 { border-top-color: #e74c3c; }
-  .team-card.t6 { border-top-color: #1abc9c; }
-  .team-card.t7 { border-top-color: #e91e63; }
+  .team-card.t1 { border-left-color: #e67e22; }
+  .team-card.t2 { border-left-color: #27ae60; }
+  .team-card.t3 { border-left-color: #3498db; }
+  .team-card.t4 { border-left-color: #9b59b6; }
+  .team-card.t5 { border-left-color: #e74c3c; }
+  .team-card.t6 { border-left-color: #1abc9c; }
+  .team-card.t7 { border-left-color: #e91e63; }
   .team-avatar {
-    width: 96px;
-    height: 96px;
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 12px;
     border: 3px solid #e8e8e8;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   }
+  .team-info { flex: 1; }
   .team-card .role {
     display: inline-block;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 6px;
+    letter-spacing: 1.2px;
+    padding: 3px 12px;
+    border-radius: 12px;
+    margin-bottom: 4px;
     background: #eef7f1;
     color: #0d4f2b;
   }
@@ -302,15 +290,16 @@
   .team-card.t6 .role { background: #e8f8f5; color: #148f77; }
   .team-card.t7 .role { background: #fce4ec; color: #c2185b; }
   .team-card h4 {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #222;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .team-card p {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: #555;
-    line-height: 1.6;
+    line-height: 1.55;
+    margin: 0;
   }
 
   /* ── CONTAINER ── */
@@ -483,8 +472,13 @@
     .hero h1 { font-size: 2rem; }
     .section-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: 1fr; }
-    .motto-cards { flex-direction: column; align-items: center; }
-    .motto-card { width: 100%; max-width: 320px; }
+    .motto-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .motto-card { padding: 14px 10px 12px; }
+    .motto-card .m-icon { font-size: 1.4rem; margin-bottom: 4px; }
+    .motto-card .m-title { font-size: 0.78rem; }
+    .motto-card .m-desc { font-size: 0.68rem; }
+    .motto-strip h3 { font-size: 1.6rem; margin-bottom: 16px; }
+    .motto-strip { padding: 28px 16px 24px; }
   }
 </style>
 </head>
@@ -545,7 +539,7 @@
 <!-- ════════════ LEADERSHIP TEAM ════════════ -->
 <section class="team-section">
   <div class="section-title">
-    <h3>Meet Your Leadership Team</h3>
+    <h3>Meet Our Team</h3>
     <p>We have assembled a balanced powerhouse of legal expertise, armed forces discipline, corporate financial management, mega-project execution, and empathetic community leadership to serve you.</p>
   </div>
 
@@ -553,51 +547,65 @@
 
     <div class="team-card t1">
       <img class="team-avatar" src="Images/Sukhvir.JPG" alt="Sukhvir">
-      <div class="role">President</div>
-      <h4>Sukhvir</h4>
-      <p>16 years as a civil litigation practitioner (LL.B., LL.M., MBA, M.A.). Specializes in land acquisition &amp; civil recovery. Committed to transparent administration and rigorous financial audits.</p>
+      <div class="team-info">
+        <div class="role">President</div>
+        <h4>Sukhvir</h4>
+        <p>16 years as a civil litigation practitioner (LL.B., LL.M., MBA, M.A.). Specializes in land acquisition &amp; civil recovery. Committed to transparent administration and rigorous financial audits.</p>
+      </div>
     </div>
 
     <div class="team-card t2">
       <img class="team-avatar" src="Images/Shubham Jain.jpg" alt="Shubham Jain">
-      <div class="role">General Secretary</div>
-      <h4>Shubham Jain</h4>
-      <p>Engineering Manager at Deloitte, 12+ years experience, former Indian Air Force engineer. Brings absolute transparency, armed forces discipline &amp; structured problem-solving.</p>
+      <div class="team-info">
+        <div class="role">General Secretary</div>
+        <h4>Shubham Jain</h4>
+        <p>Engineering Manager at Deloitte, 12+ years experience, former Indian Air Force engineer. Brings absolute transparency, armed forces discipline &amp; structured problem-solving.</p>
+      </div>
     </div>
 
     <div class="team-card t3">
       <img class="team-avatar" src="Images/Sandeep Kumar.JPG" alt="Sandeep Kumar">
-      <div class="role">Treasurer</div>
-      <h4>Sandeep Kumar</h4>
-      <p>Managing Director with 28 years of corporate experience in automobile industry &amp; financial management. Ensures every rupee is tracked and optimized.</p>
+      <div class="team-info">
+        <div class="role">Treasurer</div>
+        <h4>Sandeep Kumar</h4>
+        <p>Managing Director with 28 years of corporate experience in automobile industry &amp; financial management. Ensures every rupee is tracked and optimized.</p>
+      </div>
     </div>
 
     <div class="team-card t4">
       <img class="team-avatar" src="Images/Vipin Singh Chauhan.JPG" alt="Vipin Singh Chauhan">
-      <div class="role">Executive Member</div>
-      <h4>Vipin Singh Chauhan</h4>
-      <p>Seasoned telecom leader, 20+ years managing turnkey projects (up to ₹1000 Cr). Expert budgeting, planning &amp; execution for infrastructure upgrades.</p>
+      <div class="team-info">
+        <div class="role">Executive Member</div>
+        <h4>Vipin Singh Chauhan</h4>
+        <p>Seasoned telecom leader, 20+ years managing turnkey projects (up to ₹1000 Cr). Expert budgeting, planning &amp; execution for infrastructure upgrades.</p>
+      </div>
     </div>
 
     <div class="team-card t5">
       <img class="team-avatar" src="Images/Bharti.JPG" alt="Bharti">
-      <div class="role">Executive Member</div>
-      <h4>Bharti</h4>
-      <p>Dynamic educator &amp; HR professional, 10+ years of experience. Dedicated to building sustainable, transparent systems where residents are heard.</p>
+      <div class="team-info">
+        <div class="role">Executive Member</div>
+        <h4>Bharti</h4>
+        <p>Dynamic educator &amp; HR professional, 10+ years of experience. Dedicated to building sustainable, transparent systems where residents are heard.</p>
+      </div>
     </div>
 
     <div class="team-card t6">
       <img class="team-avatar" src="Images/Surya Soman.JPG" alt="Surya Soman">
-      <div class="role">Executive Member</div>
-      <h4>Surya Soman</h4>
-      <p>HR Head with Master's &amp; LLB, 10+ years in grievance handling &amp; labor law compliance. Ensures fair, responsive community management.</p>
+      <div class="team-info">
+        <div class="role">Executive Member</div>
+        <h4>Surya Soman</h4>
+        <p>HR Head with Master's &amp; LLB, 10+ years in grievance handling &amp; labor law compliance. Ensures fair, responsive community management.</p>
+      </div>
     </div>
 
     <div class="team-card t7">
       <img class="team-avatar" src="Images/Dr. Gargi Yadav.JPG" alt="Dr. Gargi Yadav">
-      <div class="role">Executive Member</div>
-      <h4>Dr. Gargi Yadav</h4>
-      <p>PhD scholar in Mass Communications. Brings analytical thinking, research-driven innovation &amp; fresh perspectives to community development.</p>
+      <div class="team-info">
+        <div class="role">Executive Member</div>
+        <h4>Dr. Gargi Yadav</h4>
+        <p>PhD scholar in Mass Communications. Brings analytical thinking, research-driven innovation &amp; fresh perspectives to community development.</p>
+      </div>
     </div>
 
   </div>
