@@ -193,7 +193,8 @@
     object-fit: cover;
     border: 3px solid #e0e0e0;
     box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-    margin-bottom: 8px;
+    margin: 0 auto 8px;
+    display: block;
   }
   .member .m-role {
     display: inline-block;
@@ -240,8 +241,8 @@
     gap: 12px;
   }
   .exec-row .member img {
-    width: 86px;
-    height: 86px;
+    width: 100px;
+    height: 100px;
   }
   .exec-row .member .m-name {
     font-size: 0.85rem;
@@ -319,42 +320,50 @@
       width: 210mm;
       height: 297mm;
       min-height: 297mm;
-      max-height: 297mm;
       margin: 0;
-      overflow: hidden;
+      overflow: visible;
       box-shadow: none;
       border-radius: 0;
     }
     .flyer-header, .vote-strip, .motto-bar, .promise-section,
-    .cta-footer, .footer-bar, .team-area, .member {
+    .cta-footer, .footer-bar, .team-area, .member, .highlights {
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
-    /* Print-optimized sizes */
-    .flyer-header { padding: 22px 24px 18px; }
-    .flyer-header .team-name { font-size: 2.1rem; }
-    .vote-strip { padding: 14px 20px 10px; }
-    .vote-strip .vote-date { font-size: 1.45rem; }
-    .highlights { padding: 12px 24px; gap: 24px; }
-    .hl-item .hl-num { font-size: 1.15rem; }
-    .hl-item .hl-label { font-size: 0.55rem; }
-    .motto-bar { padding: 10px 20px; gap: 22px; }
-    .team-area { padding: 14px 22px 10px; }
-    .team-area h3 { font-size: 1.1rem; margin-bottom: 3px; }
-    .leaders { gap: 10px; margin-bottom: 10px; }
-    .exec-row { gap: 10px; }
-    .member { padding: 14px 8px 12px; }
-    .member img { width: 92px; height: 92px; }
-    .exec-row .member img { width: 80px; height: 80px; }
-    .member .m-name { font-size: 0.88rem; }
-    .member .m-bio { font-size: 0.66rem; line-height: 1.45; }
-    .promise-section { padding: 16px 24px; margin: 0 22px; }
-    .promise-section h4 { font-size: 1.05rem; }
-    .promise-section p { font-size: 0.74rem; }
-    .cta-footer { padding: 12px 20px 8px; }
-    .cta-footer .cta-line { font-size: 1.15rem; }
-    .cta-footer .cta-date { font-size: 0.88rem; padding: 7px 28px; }
-    .footer-bar { padding: 6px; font-size: 0.58rem; }
+    /* Print-optimized sizes — tighter to fit everything */
+    .flyer { justify-content: flex-start; }
+    .team-area { flex: 0; justify-content: flex-start; }
+    .flyer-header { padding: 18px 24px 14px; }
+    .flyer-header .team-name { font-size: 2rem; }
+    .vote-strip { padding: 10px 20px 8px; }
+    .vote-strip .vote-date { font-size: 1.3rem; }
+    .vote-strip .vote-sub { font-size: 0.65rem; }
+    .highlights { padding: 10px 24px; gap: 20px; }
+    .hl-item .hl-icon { font-size: 1rem; }
+    .hl-item .hl-num { font-size: 1.05rem; }
+    .hl-item .hl-label { font-size: 0.5rem; }
+    .motto-bar { padding: 8px 20px; gap: 20px; }
+    .motto-bar .m-item { font-size: 0.7rem; }
+    .team-area { padding: 10px 20px 8px; }
+    .team-area h3 { font-size: 1rem; margin-bottom: 2px; }
+    .team-area .team-sub { font-size: 0.65rem; margin-bottom: 10px; }
+    .leaders { gap: 8px; margin-bottom: 8px; }
+    .exec-row { gap: 8px; }
+    .member { padding: 10px 6px 8px; }
+    .member img { width: 82px; height: 82px; }
+    .exec-row .member img { width: 82px; height: 82px; }
+    .member .m-role { font-size: 0.55rem; padding: 2px 8px; margin-bottom: 2px; }
+    .member .m-name { font-size: 0.8rem; margin-bottom: 2px; }
+    .member .m-bio { font-size: 0.6rem; line-height: 1.4; }
+    .exec-row .member .m-name { font-size: 0.78rem; }
+    .exec-row .member .m-bio { font-size: 0.58rem; }
+    .promise-section { padding: 12px 20px; margin: 0 18px; }
+    .promise-section h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .promise-section p { font-size: 0.68rem; line-height: 1.5; }
+    .cta-footer { padding: 10px 20px 6px; }
+    .cta-footer .cta-line { font-size: 1.05rem; }
+    .cta-footer .cta-date { font-size: 0.82rem; padding: 6px 24px; margin-top: 4px; }
+    .footer-bar { padding: 5px; font-size: 0.52rem; }
     @page {
       size: A4 portrait;
       margin: 0;
@@ -416,16 +425,16 @@
     }
     .leaders .member {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      text-align: left;
-      padding: 12px 14px;
-      gap: 14px;
+      text-align: center;
+      padding: 14px 14px;
     }
     .leaders .member img {
-      width: 80px;
-      height: 80px;
-      min-width: 80px;
-      margin-bottom: 0;
+      width: 90px;
+      height: 90px;
+      min-width: 90px;
+      margin-bottom: 8px;
     }
     .leaders .member .m-role { margin-bottom: 2px; font-size: 0.6rem; }
     .leaders .member .m-name { font-size: 0.95rem; }
@@ -438,16 +447,16 @@
     }
     .exec-row .member {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      text-align: left;
-      padding: 12px 14px;
-      gap: 14px;
+      text-align: center;
+      padding: 14px 14px;
     }
     .exec-row .member img {
-      width: 72px;
-      height: 72px;
-      min-width: 72px;
-      margin-bottom: 0;
+      width: 90px;
+      height: 90px;
+      min-width: 90px;
+      margin-bottom: 8px;
     }
     .exec-row .member .m-role { margin-bottom: 2px; font-size: 0.58rem; }
     .exec-row .member .m-name { font-size: 0.92rem; }
@@ -478,7 +487,7 @@
     .flyer-header .team-name { font-size: 1.3rem; }
     .vote-strip .vote-date { font-size: 1.15rem; }
     .leaders .member img { width: 68px; height: 68px; min-width: 68px; }
-    .exec-row .member img { width: 60px; height: 60px; min-width: 60px; }
+    .exec-row .member img { width: 68px; height: 68px; min-width: 68px; }
     .leaders .member .m-name { font-size: 0.9rem; }
     .exec-row .member .m-name { font-size: 0.85rem; }
     .leaders .member .m-bio, .exec-row .member .m-bio { font-size: 0.7rem; }
@@ -538,7 +547,7 @@
   <!-- Team -->
   <div class="team-area">
     <h3>Meet Our Team</h3>
-    <p class="team-sub">Legal expertise &bull; Armed forces discipline &bull; Corporate finance &bull; Mega-project execution &bull; Community leadership</p>
+    <p class="team-sub">Your neighbours. Your advocates. 100+ years of combined expertise — ready to serve.</p>
 
     <!-- Top 3 -->
     <div class="leaders">
@@ -546,7 +555,7 @@
         <img src="Images/Sukhvir.JPG" alt="Sukhvir">
         <div class="m-role">President</div>
         <div class="m-name">Sukhvir</div>
-        <div class="m-bio">16 yrs civil litigation (LL.B., LL.M., MBA, M.A.). Specializes in land acquisition &amp; civil recovery. Committed to transparent administration.</div>
+        <div class="m-bio">16 yrs civil litigation (LL.B., LL.M., MBA, M.A.). Specializes in land acquisition &amp; civil recovery. Committed to transparent administration aligned with RWA bye-laws to protect collective residents interests.</div>
       </div>
       <div class="member gensec">
         <img src="Images/Shubham Jain.jpg" alt="Shubham Jain">
